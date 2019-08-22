@@ -1,0 +1,22 @@
+
+@import './variables';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Segoe UI", "Roboto", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: $m-size;
+}
+
+code {
+  font-family: Monaco, Consolas, "Courier New", monospace;
+}
+
+button {
+  cursor: pointer;
+  &:disabled {
+    cursor: pointer;
+  }
+}

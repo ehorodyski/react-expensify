@@ -1,25 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import 'normalize.css/normalize.css';
+import './App.scss';
+
+const ExpenseDashboardPage = () => (
+  <div>
+    This is my dashboard.
+  </div>
+);
+
+const AddExpensePage = () => (
+  <div>
+    This is my add expense page.
+  </div>
+);
+
+const EditExpensePage = () => (
+  <div>
+    This is my edit expense page.
+  </div>
+);
+
+const HelpPage = () => (
+  <div>
+    This is my help expense page.
+  </div>
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Route path="/" component={ExpenseDashboardPage} exact={true} />
+        <Route path="/create" component={AddExpensePage} />
+        <Route path="/edit" component={EditExpensePage} />
+        <Route path="/help" component={HelpPage} />
+      </div>
+    </BrowserRouter>
   );
 }
 
