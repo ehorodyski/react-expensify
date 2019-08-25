@@ -1,4 +1,5 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import 'normalize.css/normalize.css';
 import './App.scss';
@@ -19,7 +20,9 @@ console.log(visibleExpenses);
 
 function App() {
   return (
-    <AppRouter />
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
   );
 }
 
