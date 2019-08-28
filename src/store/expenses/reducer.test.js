@@ -39,13 +39,11 @@ test('should not remove expenses if id not found', () => {
 test('should edit an expense', () => {
   const amount = 122000;
   const state = reducer(expenses, { type: 'EDIT_EXPENSE', id: expenses[1].id, updates: { amount } });
-  console.log(state);
   expect(state[1].amount).toBe(amount);
 });
 
 test('should not edit an expense if id is not found', () => {
   const amount = 122000;
   const state = reducer(expenses, { type: 'EDIT_EXPENSE', id: -1, updates: { amount } });
-  console.log(state);
   expect(state).toEqual(expenses);
 });
