@@ -4,6 +4,9 @@ import AppRouter from './routers/AppRouter';
 import 'normalize.css/normalize.css';
 import './App.scss';
 
+import './firebase/firebase';
+
+
 import configureStore from './store';
 import { addExpense } from './store/expenses/actions';
 import { sortByAmount } from './store/filters/actions';
