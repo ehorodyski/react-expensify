@@ -2,7 +2,7 @@ const initialState = [];
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_EXPENSE':
+    case 'ADD_EXPENSE_SUCCESS':
       return [...state, action.expense];
     case 'REMOVE_EXPENSE':
       return state.filter(({ id }) => id !== action.id);

@@ -13,7 +13,6 @@ beforeEach(() => {
 });
 
 test('should render AddExpensePage correctly', () => {
-
   expect(toJSON(wrapper)).toMatchSnapshot();
 });
 
