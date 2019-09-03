@@ -5,10 +5,10 @@ import 'normalize.css/normalize.css';
 import './App.scss';
 import './firebase/firebase';
 import configureStore from './store';
-import { sortByAmount } from './store/filters/actions';
+import { setExpenses } from './store/expenses/actions';
 
 const store = configureStore();
-store.dispatch(sortByAmount());
+store.dispatch(setExpenses());
 
 function App() {
   return (
