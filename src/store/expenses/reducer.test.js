@@ -7,24 +7,24 @@ test('should set default state', () => {
 });
 
 test('should remove expense by id', () => {
-  const state = reducer(expenses, { type: 'REMOVE_EXPENSE', id: expenses[1].id });
+  const state = reducer(expenses, { type: 'REMOVE_EXPENSE_SUCCESS', id: expenses[1].id });
   expect(state).toEqual([expenses[0], expenses[2]]);
 });
 
 test('should not remove expenses if id not found', () => {
-  const state = reducer(expenses, { type: 'REMOVE_EXPENSE', id: '-1' });
+  const state = reducer(expenses, { type: 'REMOVE_EXPENSE_SUCCESS', id: '-1' });
   expect(state).toEqual(expenses);
 });
 
 test('should edit an expense', () => {
   const amount = 122000;
-  const state = reducer(expenses, { type: 'EDIT_EXPENSE', id: expenses[1].id, updates: { amount } });
+  const state = reducer(expenses, { type: 'EDIT_EXPENSE_SUCCESS', id: expenses[1].id, updates: { amount } });
   expect(state[1].amount).toBe(amount);
 });
 
 test('should not edit an expense if id is not found', () => {
   const amount = 122000;
-  const state = reducer(expenses, { type: 'EDIT_EXPENSE', id: -1, updates: { amount } });
+  const state = reducer(expenses, { type: 'EDIT_EXPENSE_SUCCESS', id: -1, updates: { amount } });
   expect(state).toEqual(expenses);
 });
 

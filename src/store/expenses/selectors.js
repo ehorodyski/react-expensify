@@ -16,3 +16,7 @@ export default (expenses, { text, sortBy, startDate, endDate }) => {
     return 0;
   });
 };
+
+export const selectExpensesTotal = (expenses) => {
+  return expenses.map((expense) => expense.amount).reduce((sum, value) => sum + value, 0);
+};

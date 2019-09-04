@@ -9,13 +9,27 @@ export const addExpense = (expenseData = {}) => {
   };
 };
 export const addExpenseSuccess = (expense) => ({ type: 'ADD_EXPENSE_SUCCESS', expense });
-export const editExpense = (id, updates) => ({ type: 'EDIT_EXPENSE', id, updates });
-export const removeExpense = ({ id } = {}) => ({ type: 'REMOVE_EXPENSE', id });
+export const editExpense = (id, updates) => {
+  return (dispatch) => {
+    return database.ref(`expenses/${id}`).update(updates)
+      .then(() => dispatch(editExpenseSuccess(id, updates)));
+  };
+};
+export const editExpenseSuccess = (id, updates) => ({ type: 'EDIT_EXPENSE_SUCCESS', id, updates });
+export const removeExpense = ({ id } = {}) => {
+  return (dispatch) => {
+    return database.ref(`expenses/${id}`).remove()
+      .then(() => dispatch(removeExpenseSuccess({ id })));
+  };
+};
+export const removeExpenseSuccess = ({ id } = {}) => ({ type: 'REMOVE_EXPENSE_SUCCESS', id });
 export const setExpenses = () => {
   return (dispatch) => {
     return database.ref('expenses').once('value').then((snapshot) => {
       const expenses = [];
-      snapshot.forEach((item) => expenses.push({ id: item.key, ...item.val() }));
+      snapshot.forEach((item) => {
+        expenses.push({ id: item.key, ...item.val() });
+      });
       dispatch(setExpensesSuccess(expenses));
     });
   };
